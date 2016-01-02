@@ -1,5 +1,5 @@
 'use strict';
-var WTF = ( function () {
+var wtf = ( function () {
 
   function is( thing, type ) {
     if ( type ) return Object.prototype.toString.call( thing ) === type;
