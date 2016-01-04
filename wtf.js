@@ -8,13 +8,8 @@ var wtf = ( function () {
 
   function allAre( things, type ) {
     type = type || is( things[0] );
-
-    var all = true;
-    for ( var t = 0; t < things.length; t++ ) {
-      if ( !is( things[t], type ) ) all = false;
-    }
-
-    return all;
+    for ( var t = 0; t < things.length; t++ ) if ( !is( things[t], type ) ) return false;
+    return true;
   }
 
   return {

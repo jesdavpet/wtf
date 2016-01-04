@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>"wtf.js" tests</title>
+    <meta name="author" content="jesdavpet" />
+    <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.20.0.css" />
+  </head>
+
+  <body>
+    <body>
+      <div id="qunit"></div>
+      <div id="qunit-fixture"></div>
+
+      <script src="http://code.jquery.com/qunit/qunit-1.20.0.js"></script>
+      <script type="text/javascript" src="wtf.min.js"></script>
+      <script type="text/javascript">
+/******************************************************************************/
+
+QUnit.test( 'Checks if \"wtf\" object exists in scope...', function( assert ) {
+  assert.ok( wtf, '\"wtf\" object exists in scope' );
+} );
+
+QUnit.test( 'Tests \"is()\" function...', function( assert ) {
+  assert.equal( wtf.ARRAY, wtf.is( [] ),
+    'Array successfully detected!'
+  );
+  assert.equal( wtf.FUNCTION, wtf.is( function () {} ),
+    'Function successfully detected!'
+  );
+  assert.equal( wtf.NULL, wtf.is( null ),
+    'Null successfully detected!'
+  );
+  assert.equal( wtf.NUMBER, wtf.is( 42 ),
+    'Number successfully detected!'
+  );
+  assert.equal( wtf.STRING, wtf.is( 'A string.' ),
+    'String successfully detected!'
+  );
+  assert.equal( wtf.UNDEFINED, wtf.is(),
+    'Undefined successfully detected!'
+  );
+} );
+
+QUnit.test( 'Tests \"allAre()\" function...', function( assert ) {
+  assert.ok( wtf.allAre( [ 'cats', 'dragons', 'muffins' ] ),
+    'Unspecified equality of array elements successfully detected!'
+  );
+  assert.ok( wtf.allAre( [ 'cats', 'dragons', 'muffins' ], wtf.STRING ),
+    'Specific equality of array elements successfully detected!'
+  );
+} );
+
+/******************************************************************************/
+      </script>
+    </body>
+  </body>
+
+</html>

@@ -1,10 +1,10 @@
-### "wtf.js": mind-numbingly simple, simplifies type comparison in JavaScript.
+#### "wtf.js" simplifies type comparison in JavaScript.
   - *Reliably* compares types by sidestepping JavaScript's flaky `typeof` operator
   - Easy to use, and extend with custom types (including non-primitive objects)
   - Free of dependencies, and *ultra lightweight* at 0.3kb minified
   - Works across all JavaScript environments
 
-#### `is( thing [, type] )`
+### `is( thing [, type] )`
 `wtf.is( thing );` returns the string representation for type of `thing`.
 
 `wtf.is( thing, type );` returns a boolean indicating if `thing` is of `type`.
