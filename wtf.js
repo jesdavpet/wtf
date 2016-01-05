@@ -1,27 +1,31 @@
 'use strict';
 var wtf = ( function () {
 
-  function is( thing, type ) {
-    if ( type ) return Object.prototype.toString.call( thing ) === type;
-    else return Object.prototype.toString.call( thing );
-  }
+  function type( thing ) { return Object.prototype.toString.call( thing ); }
 
-  function allAre( things, type ) {
-    type = type || is( things[0] );
-    for ( var t = 0; t < things.length; t++ ) if ( !is( things[t], type ) ) return false;
-    return true;
+  function is( thing, thingType ) { return type( thing ) === thingType; }
+
+  function are( things, thingType ) {
+    if ( is( things, type( [] ) ) ) {
+      thingType = thingType || type( things[0] );
+      for ( var t = 0; t < things.length; t++ ) if ( !is( things[t], thingType ) ) return false;
+      return true;
+    } else {
+      return false;
+    }
   }
 
   return {
+    'type' : type,
     'is' : is,
-    'allAre' : allAre,
+    'are' : are,
 
-    'ARRAY' : is( [] ),
-    'FUNCTION' : is( function () {} ),
-    'NULL' : is( null ),
-    'NUMBER' : is( 42 ),
-    'STRING' : is( 'A string.' ),
-    'UNDEFINED' : is()
+    'ARRAY' : type( [] ),
+    'FUNCTION' : type( function () {} ),
+    'NULL' : type( null ),
+    'NUMBER' : type( 42 ),
+    'STRING' : type( 'A string.' ),
+    'UNDEFINED' : type()
   };
 
-} )();
+} ) ();
