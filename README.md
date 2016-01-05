@@ -1,4 +1,4 @@
-## "wtf.js" makes reasoning about types in JavaScript less frustrating
+## "wtf.js" simplifies handling types in JavaScript.
   - *Reliably* compares types by sidestepping JavaScript's flaky `typeof` and `instanceof` operators
   - Easy to use, and extend with custom types (including non-primitive objects)
   - Free of dependencies, and *ultra lightweight* at 0.3kb minified
@@ -6,10 +6,10 @@
 
   JavaScript's native `typeof` operator can be awkward, it's one of the language's warts. Take for example `typeof null`, which one would expect to return `"Null"`, but is actually `"Object"`! *How exciting.*
 
-  Similarly, almost any class you define yourself will be considered just a generic `"Object"` by `typeof`. Unfortunately `instanceof` is even less helpful than `typeof`. **wtf.js** to the rescue...
+  Similarly, almost any class you define yourself will be considered just a generic object by `typeof`. Unfortunately `instanceof` is even less helpful than `typeof`. Enter **wtf.js** to the rescue...
 
 #### `type( thing )`
-    - `wtf.type( thing );` returns the string representation for type of `thing`.
+  - `wtf.type( thing );` returns the string representation for type of `thing`.
 
 #### `is( thing, type )`
   - `wtf.is( thing, type );` returns a boolean indicating if `thing` is of `type`.
