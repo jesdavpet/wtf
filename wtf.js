@@ -1,5 +1,5 @@
 'use strict';
-var wtf = ( function () {
+var wtf = wtf || ( function () {
 
   function type( thing ) { return Object.prototype.toString.call( thing ); }
 
