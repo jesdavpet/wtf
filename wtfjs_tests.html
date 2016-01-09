@@ -16,60 +16,11 @@
       <script type="text/javascript" src="wtf.js"></script>
       <script type="text/javascript">
 /******************************************************************************/
+
 QUnit.module( 'Tests \"wtf\" object...' );
 
 QUnit.test( 'Checks if \"wtf\" object exists in scope...', function( assert ) {
   assert.ok( wtf, '\"wtf\" object exists in scope' );
-} );
-
-/******************************************************************************/
-
-QUnit.module( 'Tests \"type()\" function...' );
-
-QUnit.test( 'Check equality of \"wtf.type( thing )\" and wtf.TYPE constant...', function( assert ) {
-  assert.equal( wtf.ARRAY, wtf.type( [] ), 'Array successfully detected!' );
-  assert.equal( wtf.FUNCTION, wtf.type( function () {} ), 'Function successfully detected!' );
-  assert.equal( wtf.NULL, wtf.type( null ), 'Null successfully detected!' );
-  assert.equal( wtf.NUMBER, wtf.type( 42 ), 'Number successfully detected!' );
-  assert.equal( wtf.STRING, wtf.type( 'A string.' ), 'String successfully detected!' );
-  assert.equal( wtf.UNDEFINED, wtf.type(), 'Undefined successfully detected!' );
-
-  assert.notOk( wtf.NULL === wtf.type(), 'Mismatched type constants correctly resulted in false!' );
-} );
-
-/******************************************************************************/
-
-QUnit.module( 'Tests \"is()\" function...' );
-
-QUnit.test( 'Check evaluation of \"wtf.is( type, wtf.TYPE )...', function( assert ) {
-  assert.ok( wtf.is( [], wtf.ARRAY ), 'Array successfully detected!' );
-  assert.ok( wtf.is( function () {}, wtf.FUNCTION ), 'Function successfully detected!' );
-  assert.ok( wtf.is( null, wtf.NULL ), 'Null successfully detected!' );
-  assert.ok( wtf.is( 42, wtf.NUMBER ), 'Number successfully detected!' );
-  assert.ok( wtf.is( 'A string.', wtf.STRING ), 'String successfully detected!' );
-  assert.ok( wtf.is( undefined , wtf.UNDEFINED ), 'Undefined successfully detected!' );
-
-  assert.notOk( wtf.is( 'A string', undefined ), 'Undefined TYPE constant correctly resulted in false!' );
-} );
-
-/******************************************************************************/
-
-QUnit.module( 'Tests \"are()\" function...' );
-
-QUnit.test( 'Check evaluation of \"wtf.are( [type] )\"...', function( assert ) {
-  assert.ok( wtf.are( [] ), 'Unspecified equality of empty array detected!' );
-  assert.ok( wtf.are( [ 'cats', 'dragons', 'muffins' ] ), 'Unspecified equality of array elements successfully detected!' );
-
-  assert.notOk( wtf.are( [ 'cats', 42, null, [] ] ), 'Unspecified equality of mixed type array element(s) correctly NOT successful!' );
-} );
-
-QUnit.test( 'Check evaluation of \"wtf.are( [type], wtf.TYPE )\"...', function( assert ) {
-  assert.ok( wtf.are( [], wtf.UNDEFINED ), 'Specified equality of empty array detected!' );
-  assert.ok( wtf.are( [ 'cats', 'dragons', 'muffins' ], wtf.STRING ), 'Specified equality of array elements successfully detected!' );
-
-  assert.notOk( wtf.are( [ 'cats', 'dragons', 'muffins' ], wtf.NUMBER ), 'Equality of same type array elements as mismatched specified type correctly NOT successful!' );
-  assert.notOk( wtf.are( [ 'cats', 42, null, [] ], wtf.STRING ), 'Specified equality of mixed type array element(s) correctly NOT successful!' );
-  assert.notOk( wtf.are( [ 'cats', 42, null, [] ], undefined ), 'Empty specified equality of mixed type array element(s) correctly NOT successful!' );
 } );
 
 /******************************************************************************/
