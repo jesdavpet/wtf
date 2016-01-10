@@ -1,31 +1,74 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
+    <head>
     <title>"wtf.js" tests</title>
-    <meta name="author" content="jesdavpet" />
+    <meta name="author" content="Jesse Peterson @jesdavpet" />
     <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.20.0.css" />
-  </head>
+    </head>
 
-  <body>
     <body>
-      <div id="qunit"></div>
-      <div id="qunit-fixture"></div>
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
 
-      <script src="http://code.jquery.com/qunit/qunit-1.20.0.js"></script>
-      <script type="text/javascript" src="wtf.js"></script>
-      <script type="text/javascript">
-/******************************************************************************/
+        <script src="http://code.jquery.com/qunit/qunit-1.20.0.js"></script>
+        <script type="text/javascript" src="wtf.js"></script>
+        <script type="text/javascript">
+        /******************************************************************************/
 
-QUnit.module( 'Tests \"wtf\" object...' );
+        QUnit.module( 'Tests \"wtf\" object:' );
+        QUnit.test( 'testing if \"wtf\" object exists in scope...', function( assert ) {
+            assert.ok( wtf, '\"wtf\" object exists in scope' );
+        } );
 
-QUnit.test( 'Checks if \"wtf\" object exists in scope...', function( assert ) {
-  assert.ok( wtf, '\"wtf\" object exists in scope' );
-} );
+        /******************************************************************************/
 
-/******************************************************************************/
-      </script>
+        QUnit.module( 'Tests \"wtf.type()\" function:' );
+        QUnit.test( 'testing type() function evaluates correctly...', function( assert ) {
+            assert.equal( wtf.type( [] ), '[object Array]', '\"Array\" type OK' );
+            assert.equal( wtf.type( new Error() ), '[object Error]', '\"Error\" type OK' );
+            assert.equal( wtf.type( function () {} ), '[object Function]', '\"Function\" type OK' );
+            assert.equal( wtf.type( null ), '[object Null]', '\"Null\" type OK' );
+            assert.equal( wtf.type( 42 ), '[object Number]', '\"Number\" type OK' );
+            assert.equal( wtf.type( {} ), '[object Object]', '\"Object\" type OK' );
+            assert.equal( wtf.type( 'Cats.' ), '[object String]', '\"String\" type OK' );
+            assert.equal( wtf.type(), '[object Undefined]', '\"Undefined\" type OK' );
+        } );
+
+        /******************************************************************************/
+
+        QUnit.module( 'Tests \"wtf.add()\" function:' );
+        QUnit.test( 'testing add() function evaluates correctly...', function( assert ) {
+            assert.notOk( wtf.BODYTAG, '\"BODYTAG\" is not yet a wtf type' );
+            wtf.add( 'BODYTAG', document.body );
+            assert.ok( wtf.BODYTAG, '\"BODYTAG\" is now a wtf type' );
+            assert.ok( wtf.BODYTAG( document.body ), '\"BODYTAG\" associated with the correct type string' );
+        } );
+
+        QUnit.test( 'testing add() function works as getter...', function( assert ) {
+            assert.equal( wtf.ARRAY(), '[object Array]', '\"Array\" type OK' );
+            assert.equal( wtf.ERROR(), '[object Error]', '\"Error\" type OK' );
+            assert.equal( wtf.FUNCTION(), '[object Function]', '\"Function\" type OK' );
+            assert.equal( wtf.NULL(), '[object Null]', '\"Null\" type OK' );
+            assert.equal( wtf.NUMBER(), '[object Number]', '\"Number\" type OK' );
+            assert.equal( wtf.OBJECT(), '[object Object]', '\"Object\" type OK' );
+            assert.equal( wtf.STRING(), '[object String]', '\"String\" type OK' );
+            assert.equal( wtf.UNDEFINED(), '[object Undefined]', '\"Undefined\" type OK' );
+        } );
+
+        QUnit.test( 'testing add() function compares correctly...', function( assert ) {
+            assert.ok( wtf.ARRAY( [] ), '[object Array]', '\"Array\" type OK' );
+            assert.ok( wtf.ERROR( new Error() ), '[object Error]', '\"Error\" type OK' );
+            assert.ok( wtf.FUNCTION( function () {} ), '[object Function]', '\"Function\" type OK' );
+            assert.ok( wtf.NULL( null ), '[object Null]', '\"Null\" type OK' );
+            assert.ok( wtf.NUMBER( 42 ), '[object Number]', '\"Number\" type OK' );
+            assert.ok( wtf.OBJECT( {} ), '[object Object]', '\"Object\" type OK' );
+            assert.ok( wtf.STRING( 'Cats.' ), '[object String]', '\"String\" type OK' );
+            assert.ok( wtf.UNDEFINED( undefined ), '[object Undefined]', '\"Undefined\" type OK' );
+        } );
+
+        /******************************************************************************/
+
+        </script>
     </body>
-  </body>
-
 </html>
