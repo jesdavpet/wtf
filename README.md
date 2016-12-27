@@ -1,38 +1,63 @@
-## Concise type evaluation and comparison in JavaScript with WTF.JS
-  - Side steps JavaScript's flaky `typeof` and `instanceof` operators
-  - Easy to use and extend with custom types
-  - Dependency free, and ultra lightweight at 0.5kb (minified)
-  - Works across all JavaScript environments
+Type evaluation and comparison with Wtf.js
+==========================================
+
+  - Side steps JavaScript's inconsistent `typeof` and `instanceof` operators
+  - Dependency free, and ultra lightweight at 0.3kb (minified)
+
+JavaScript's native `typeof` operator can be awkward, it's one of the language's warts. Take for example `typeof null`, which one would expect to return `"Null"`, but is actually `"Object"`! Unfortunately `instanceof` is even less helpful than `typeof`.
+
+This can lead to unnecessarily complex (and buggy) comparison statements.
+*Enter Wtf.js to the rescue...*
 
 
+Using Wtf.js type evaluation and predicates
+-------------------------------------------
 
-JavaScript's native `typeof` operator can be awkward, it's one of the language's warts. Take for example `typeof null`, which one would expect to return `"Null"`, but is actually `"Object"`!
-Similarly, almost any class you define yourself will be considered just a generic object by `typeof`. Unfortunately `instanceof` is even less helpful than `typeof`.
+Predefined default types will return `true` / `false` indicating if the (optional) argument passed was of that type -- if no argument is passed, the type string for that type is returned instead:
+  - `Wtf.ARRAY([thing])`
+  - `Wtf.FUNCTION([thing])`
+  - `Wtf.NULL([thing])`
+  - `Wtf.NUMBER([thing])`
+  - `Wtf.OBJECT([thing])`
+  - `Wtf.STRING([thing])`
+  - `Wtf.UNDEFINED([thing])`
 
+Therefore, you can use these functions either as predicates or constants.
 
-This can lead to unnecessarily complex (and buggy) comparison statements. Enter WTF.JS to the rescue...
-
-#### Using WTF.JS type evaluation and predicates
-Test for an array type: `if ( wtf.ARRAY( x ) ) { ... }`
-
-Display the type of an unknown object for debugging: `console.log( wtf.type( thing ) )`
-
-Handling a function argument which may be one of a variety of known types:
+Test for an array type:
 ```
-switch ( wtf.type( thing ) ) {
-    case wtf.STRING() : // Handle strings
-        break;
-    case wtf.NUMBER() : // Handle numbers
-        break;
-    case wtf.ARRAY() : // Handle arrays
-        break;
-    // Etc.
+if (wtf.ARRAY(x)) {
+  // etc.
 }
 ```
 
-#### Customizing WTF.JS
-Add a new type comparison function using an example class is simple: `wtf.add( 'SITH', new Sith( 'Vader' ) );`
+Display the type of an unknown object for debugging: `console.log(wtf.type(thing))`
+
+Handling a function argument which may be one of a variety of known types:
+```
+switch (wtf.type(thing)) {
+    case wtf.STRING() : // Handle string case
+        break;
+    case wtf.NUMBER() : // Handle number case
+        break;
+    case wtf.ARRAY() : // Handle array case
+        break;
+    // etc.
+}
+```
+
+Since custom objects / classes will evaluate as a Wtf.OBJECT(), the use of `instanceof` to narrow down the object's sub-type base on constructor as a second step.
+```
+if (wtf.OBJECT(x)) {
+  if (x instanceof FancyClass) doFancyThings();
+  // etc.
+}
+```
 
 
-Then, use the new comparison function to compare types:
-`wtf.SITH( kyloRen );` or `wtf.type( kyloRen ) === wtf.SITH()`
+On **not** using Wtf.js
+-----------------------
+
+Common libraries such as: jQuery, Underscore or Lodash, etc. include type helper functions that accomplish the same thing -- use those instead.
+
+**NOTE:** *Wtf.js is a reinvention of a very small wheel for a size optimized -- and, therefore, dependency-free -- JavaScript project. If that's your use case, then enjoy!*
