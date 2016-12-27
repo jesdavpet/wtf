@@ -26,21 +26,21 @@ Therefore, you can use these functions either as predicates or constants.
 
 Test for an array type:
 ```
-if (wtf.ARRAY(x)) {
+if (Wtf.ARRAY(x)) {
   // etc.
 }
 ```
 
-Display the type of an unknown object for debugging: `console.log(wtf.type(thing))`
+Display the type of an unknown object for debugging: `console.log(Wtf.type(thing))`
 
 Handling a function argument which may be one of a variety of known types:
 ```
-switch (wtf.type(thing)) {
-    case wtf.STRING() : // Handle string case
+switch (Wtf.type(thing)) {
+    case Wtf.STRING() : // Handle string case
         break;
-    case wtf.NUMBER() : // Handle number case
+    case Wtf.NUMBER() : // Handle number case
         break;
-    case wtf.ARRAY() : // Handle array case
+    case Wtf.ARRAY() : // Handle array case
         break;
     // etc.
 }
@@ -48,7 +48,7 @@ switch (wtf.type(thing)) {
 
 Since custom objects / classes will evaluate as a Wtf.OBJECT(), the use of `instanceof` to narrow down the object's sub-type base on constructor as a second step.
 ```
-if (wtf.OBJECT(x)) {
+if (Wtf.OBJECT(x)) {
   if (x instanceof FancyClass) doFancyThings();
   // etc.
 }

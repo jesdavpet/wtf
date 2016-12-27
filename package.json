@@ -1,5 +1,5 @@
 {
-  "name": "Wtf",
+  "name": "@jesdavpet/wtf",
   "version": "1.0.0",
   "description": "Utility library simplifying type detection and comparison.",
   "main": "src/Wtf.js",
