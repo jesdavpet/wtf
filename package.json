@@ -1,8 +1,8 @@
 {
-  "name": "Wtf",
+  "name": "@jesdavpet/wtf",
   "version": "1.0.0",
   "description": "Utility library simplifying type detection and comparison.",
-  "main": "src/Wtf.js",
+  "main": "src/wtf.js",
   "scripts": {
     "test": "npm run test-unit",
     "test-unit": "mocha test/**.test.js",
@@ -18,7 +18,7 @@
     "typeof",
     "instanceof"
   ],
-  "author": "Jesse David Peterson <@jesdavpet>",
+  "author": "Jesse David Peterson <@jesdavpet>  (http://www.jes.dav.pet)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jesdavpet/wtf/issues"
