@@ -1,6 +1,6 @@
 {
   "name": "@jesdavpet/wtf",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Utility library simplifying type detection and comparison.",
   "main": "src/wtf.js",
   "scripts": {
