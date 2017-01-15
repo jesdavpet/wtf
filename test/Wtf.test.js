@@ -1,7 +1,7 @@
 var expect = require('chai').expect
-var Wtf = require('../src/Wtf.js')
+var wtf = require('../src/wtf.js')
 
-describe('Wtf', function () {
+describe('wtf', function () {
   var DEFAULT_TYPES = [
     { name: 'ARRAY',      type: '[object Array]',     exemplar: [] },
     { name: 'FUNCTION',   type: '[object Function]',  exemplar: function () {} },
@@ -11,9 +11,6 @@ describe('Wtf', function () {
     { name: 'STRING',     type: '[object String]',    exemplar: 'Abc' },
     { name: 'UNDEFINED',  type: '[object Undefined]', exemplar: undefined },
   ]
-
-  var wtf = null
-  beforeEach(function () { wtf = new Wtf() })
 
   it('should have add(...) and type(...) methods', function () {
     expect(wtf).to.have.ownProperty('add')
