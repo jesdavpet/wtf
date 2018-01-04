@@ -4,6 +4,7 @@
   "description": "Utility library simplifying type detection and comparison.",
   "main": "src/wtf.js",
   "scripts": {
+    "build": "rimraf -f dist && mkdir dist && uglifyjs ./src/wtf.js -o ./dist/wtf.min.js -c -m",
     "test": "npm run test-unit",
     "test-unit": "mocha test/**.test.js",
     "test-unit-watch": "mocha test/**.test.js -w"
@@ -26,6 +27,8 @@
   "homepage": "https://github.com/jesdavpet/wtf#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.2.0"
-  }
+    "mocha": "^3.2.0",
+    "uglify-js": "^3.3.4"
+  },
+  "dependencies": {}
 }
