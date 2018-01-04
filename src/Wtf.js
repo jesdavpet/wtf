@@ -17,7 +17,7 @@ module.exports = (function wtf () {
     'NUMBER':     42,
     'OBJECT':     {},
     'STRING':     'abc',
-    'UNDEFINED':  undefined,
+    'UNDEFINED':  undefined
   }
 
   /**
